@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useState, useEffect } from 'react'
 import './App.css';
+import Nav from './Components/Nav'
+import MovieCard from './Components/MovieCard';
 
 function App() {
+  const [movies, setMovies] = useState([])
+  useEffect(() => {
+    fetch('http://example.com/movies.json')
+      .then(response => response.json())
+      .then(data => console.log(data));
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{fontFamily: 'SF Pro Display', color: '#ffffff'}}>
+      <div style={{background: '#1C1C24'}}>
+            <Nav />
+      </div>
+      <div style={{background: '#131419'}}>
+        <div style={{fontSize: '28px', paddingTop: '2rem', paddingLeft: '10rem'}}>Popular Movies</div>
+        <MovieCard />
+      </div>
     </div>
   );
 }
