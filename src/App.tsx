@@ -7,9 +7,9 @@ import MovieCard from './Components/MovieCard';
 function App() {
   const [movies, setMovies] = useState([])
   useEffect(() => {
-    fetch('http://example.com/movies.json')
+    fetch('https://api.themoviedb.org/3/movie/76341?api_key=<<api_key>>')
       .then(response => response.json())
-      .then(data => console.log(data));
+      .then(data => setMovies(data));
   }, [])
 
   return (
